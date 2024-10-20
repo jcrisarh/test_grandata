@@ -9,6 +9,7 @@ Asegúrate de tener Docker y Docker Compose instalados en tu máquina. Puedes ve
 ```bash
 docker --version
 docker-compose --version
+```
 
 Para ejecutar el proyecto, sigue estos pasos:
 
