@@ -42,6 +42,8 @@ El histograma de llamadas generado se encuentra en: `results/calls_histogram.png
 
 ## EJERCICIO 2: Preguntas generales
 
+## PREGUNTA 1
+
 1. La empresa cuenta con un cluster on premise de Hadoop en el cual se ejecuta, tanto el
 data pipeline principal de los datos, como los análisis exploratorios de los equipos de
 Data Science y Data Engineering. Teniendo en cuenta que cada proceso compite por un
@@ -65,6 +67,8 @@ Los procesos exploratorios deben ser ejecutados durante los horarios de baja car
 ## Herramientas de Scheduling
 
 Apache Oozie, Apache Airflow, YARN Capacity Scheduler
+
+## PREGUNTA 2
 
 2. Existe una tabla del Data Lake con alta transaccionalidad, que es actualizada
 diariamente con un gran volumen de datos. Consultas que cruzan información con esta
