@@ -66,3 +66,25 @@ Los procesos exploratorios deben ser ejecutados durante los horarios de baja car
 
 Apache Oozie, Apache Airflow, YARN Capacity Scheduler
 
+2. Existe una tabla del Data Lake con alta transaccionalidad, que es actualizada
+diariamente con un gran volumen de datos. Consultas que cruzan información con esta
+tabla ven afectada su performance en tiempos de respuesta.
+Según su criterio, ¿cuáles serían las posibles causas de este problema? Dada la
+respuesta anterior, qué sugeriría para solucionarlo.
+
+## Posibles Causas
+
+Las posibles causas pueden ser:
+- Una alta concurrencia de lecturas y/o escrituras, es decir, muchas transacciones realizadas sobre la misma tabla simultáneamente.
+- Falta de indexación o indexación inadecuada para los datos utilizados en la consulta.
+- Falta de particionamiento de la la tabla.
+- Falta de recursos.
+
+## Sugerencias para solucionarlo
+
+- **Implementar particionamiento**: Dividir la tabla en particiones para mejorar el rendimiento.
+- **Optimizar índices**: Crear índices adecuados en columnas de consulta.
+- **Uso de materialized views**: Crear materialized views para consultas frecuentes, almacenando resultados precomputados.
+- **Ajuste de recursos**: Asegurar que la infraestructura de hardware (CPU, RAM, disco) sea suficiente para la carga de trabajo.
+- **Monitoreo y tuning**: Implementar herramientas de monitoreo para identificar cuellos de botella y ajustar la configuración según sea necesario.
+
