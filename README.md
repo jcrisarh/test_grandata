@@ -127,6 +127,18 @@ spark = SparkSession.builder \
     .getOrCreate()
 ```
 
+## Otras configuraciones relevantes
+
+- Si se utliza YARN como gestor de recursos, se debe asegurar de que la configuración permita que Spark use solo la mitad de los recursos.
+
+- **Configuración de paralelismo:** Se puede establecer el número de particiones de los RDDs y DataFrames para que sea adecuado para el número de cores disponibles:
+```python
+spark.conf.set("spark.default.parallelism", "18")
+```
+
+
+
+
 
 
 
