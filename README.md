@@ -92,3 +92,42 @@ Las posibles causas pueden ser:
 - **Ajuste de recursos**: Asegurar que la infraestructura de hardware (CPU, RAM, disco) sea suficiente para la carga de trabajo.
 - **Monitoreo y tuning**: Implementar herramientas de monitoreo para identificar cuellos de botella y ajustar la configuración según sea necesario.
 
+## PREGUNTA 3
+3. Imagine un clúster Hadoop de 3 nodos, con 50 GB de memoria y 12 cores por nodo.
+Necesita ejecutar un proceso de Spark que utilizará la mitad de los recursos del clúster,
+dejando la otra mitad disponible para otros jobs que se lanzarán posteriormente.
+¿Qué configuraciones en la sesión de Spark implementaría para garantizar que la mitad
+del clúster esté disponible para los jobs restantes?
+Proporcione detalles sobre la asignación de recursos, configuraciones de Spark, y
+cualquier otra configuración relevante.
+
+## Recursos Totales del Clúster
+
+- **Memoria total:** 3 nodos × 50 GB = 150 GB
+- **Cores totales:** 3 nodos × 12 cores = 36 cores
+
+## Recursos Disponibles para Spark
+
+Para usar solo la mitad de los recursos del clúster:
+
+- **Memoria para Spark:** 150 GB / 2 = 75 GB
+- **Cores para Spark:** 36 cores / 2 = 18 cores
+
+## Configuración de la Sesión de Spark
+
+```python
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder \
+    .appName("MiAplicacion") \
+    .config("spark.executor.memory", "25g") \  # Usando 75 GB / 3 ejecutores 
+    .config("spark.executor.cores", "6") \    # Usando 18 cores / 3 ejecutores 
+    .config("spark.cores.max", "18") \        # Limitar el total de cores usados
+    .config("spark.driver.memory", "25g") \   # Asignar memoria al driver
+    .getOrCreate()
+```
+
+
+
+
+
